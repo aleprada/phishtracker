@@ -1,0 +1,20 @@
+#virtualenv
+/venv
+#build
+/build
+
+#config
+/config/config_files/config_prod.ini
+/config/config_files/domain_prod.txt
+/config/sqlite/monitored_domains
+
+#reports
+/reports/
+#pychar metadata
+.idea/
+
+.pyc
+*.pyo
+.cpython
+__pycache__/
+/test/.pytest_cache
