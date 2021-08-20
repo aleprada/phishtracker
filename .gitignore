@@ -4,12 +4,15 @@
 /build
 
 #config
-/config/config_files/config_prod.ini
-/config/config_files/domain_prod.txt
-/config/sqlite/monitored_domains
+config/config_files/config_prod.ini
+config/config_files/domain_prod.txt
+config/sqlite/*
+!config/sqlite/.gitkeep
 
 #reports
-/reports/
+reports/*
+# exception to the rule
+!reports/.gitkeep
 #pychar metadata
 .idea/
 
