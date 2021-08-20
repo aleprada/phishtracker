@@ -1,17 +1,16 @@
 **Phishing tracker**  
 
 This tool allows you to track phishing campaigns using the tool [dnstwist](https://github.com/elceef/dnstwist), an SQLite
-database and [pyMISP](https://pymisp.readthedocs.io/en/latest/modules.html#pymisp) for sending to MISP instances potential 
-campaigns.  
+database and [pyMISP](https://pymisp.readthedocs.io/en/latest/modules.html#pymisp)  for storing the potential phishing 
+campaigns in a MISP instance.
 
 The tool has 2 parts:
-* A simple bash file that reads domain names from the domain_list.txt file and checks with dnstwist for
-potential phishing campaigns. In this case, it's also checking MX servers. The output is stored in JSON format in the 
-report folder and the domains are stored in the SQLite dabatabase for accountability.
+* A Bash file that reads domain names from the domain_list.txt file and checks with Dnstwist the existence of potential 
+phishing campaigns supplanting the domain names of the list. In this case, it's also checking MX servers. The output is 
+stored in JSON format in the report folder and the domains are stored in the SQLite database for traceability.
 * A Python script  with PyMISP for parsing JSON reports by dnstwist and send those domains that aren't stored in the
 SQLite database
 
-  
 **Usage**
 
 1. Create two cron jobs:
@@ -20,17 +19,18 @@ SQLite database
 
 For sending the domain name alterations to your MISP instance include the following parameter:
 
-```bash 
+``` bash 
    python report2misp.py --misp
 ```
 
 If a proxy(-p) is needed:
-```
-```bash 
+``` bash 
    python report2misp.py --misp --proxy
 ```
-```
-Output
+
+
+How the output looks like:
+
 ``` bash
 [+] Domain monitored: acme.com
 		[!] Potential phishing sites: 
@@ -42,7 +42,7 @@ Output
 		[!] URL: acmeb.com
 			[+] Technique used: addition
 			[+] DNS-ns: nsg1.namebrightdns.com
-            [+] DNS-a: 18.211.9.206
+                        [+] DNS-a: 18.211.9.206
                 ........
                 .......
 [*] Sending alerts to MISP
